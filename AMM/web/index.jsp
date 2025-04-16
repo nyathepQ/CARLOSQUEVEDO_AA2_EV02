@@ -23,13 +23,16 @@
             <img src="Img/Logo.jpeg" alt="Logo ALF" id="login_logo">
         </div>
         <div id="login_form">
-            <form>
+            <form name="ingreso" action="LoginServlet" method="post">
                 <i class="fa-solid fa-user fa-2x"></i>
                 <input type="text" id="user" name="user" placeholder="Usuario" required>
                 <i class="fa-solid fa-lock fa-2x"></i>
                 <input type="password" name="pass" id="pass" placeholder="Contraseña" required>
                 
                 <button type="submit">Ingresar</button>
+                <% if (request.getAttribute("error") != null) { %>
+                <p style="color:red;"><%= request.getAttribute("error") %></p>
+                <% } %>
             </form>
         </div>
     </main>

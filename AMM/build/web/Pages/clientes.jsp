@@ -19,11 +19,11 @@
         <a href="inicio.html"><img src="../Img/Logo.jpeg" alt="Logo ALF" class="logo_pages"></a>
         <div class="list_pages">
             <ul>
-                <li><a href="agenda.html">Agenda</a></li>
-                <li><a href="empleados.html">Empleados</a></li>
-                <li><a href="equipos.html">Equipo de trabajo</a></li>
+                <li><a href="agenda.jsp">Agenda</a></li>
+                <li><a href="empleados.jsp">Empleados</a></li>
+                <li><a href="equipos.jsp">Equipo de trabajo</a></li>
                 <li class = "actual_page"><a class = "a_actual_page">Clientes</a></li>
-                <li><a href="valores.html">Varios</a></li>
+                <li><a href="valores.jsp">Varios</a></li>
             </ul>            
         </div>
         <a href="https://wa.me/573212300716" target="_blank">

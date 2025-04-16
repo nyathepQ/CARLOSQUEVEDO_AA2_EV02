@@ -189,4 +189,26 @@ public class UsuarioManager {
         
         return datos;
     }
+    
+    public boolean verificarCredencial(String user, String pass){
+        String sql = "SELECT * FROM usuario WHERE nombre_usuario = ? AND contrasena_usuario = ?";
+        
+        try (Connection cx = ConexionBD.getConnection();
+                PreparedStatement stat = cx.prepareStatement(sql)){
+            
+            stat.setString(1, user);
+            stat.setString(2, pass);
+            ResultSet rs = stat.executeQuery();
+            
+            if(rs.next()){
+                return true;
+            }
+            
+        } catch (SQLException e){
+            e.printStackTrace();
+        }
+        
+        return false;
+    }   
+    
 }
