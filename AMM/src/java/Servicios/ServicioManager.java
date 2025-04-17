@@ -13,12 +13,11 @@ import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class ServicioManager {
     public boolean insertServicio(Servicio service){
-        String sql = "INSERT INTO usuario (id_cliente, id_equipo, id_tipoLimp, fecha, hora, tiempo_estimado, tiempo_finalizacion, precio, observacion, user_crea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO servicio (id_cliente, id_equipo, id_tipoLimp, fecha, hora, tiempo_estimado, tiempo_finalizacion, precio, observacion, user_crea) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection cx = ConexionBD.getConnection();
                 PreparedStatement stat = cx.prepareStatement(sql)){
@@ -124,7 +123,7 @@ public class ServicioManager {
     }
     
     public boolean modificarServicio (Servicio servicio) {
-        String sql = "UPDATE usuario SET id_cliente = ?, id_equipo = ?, id_tipoLimp = ?, fecha = ?, hora = ?, tiempo_estimado = ?, tiempo_finalizacion = ?, precio = ?, observacion = ?, user_modifica = ?, modificado_el = ? WHERE id_servicio = ?";
+        String sql = "UPDATE servicio SET id_cliente = ?, id_equipo = ?, id_tipoLimp = ?, fecha = ?, hora = ?, tiempo_estimado = ?, tiempo_finalizacion = ?, precio = ?, observacion = ?, user_modifica = ?, modificado_el = ? WHERE id_servicio = ?";
         
         try (Connection cx = ConexionBD.getConnection();
                 PreparedStatement stat = cx.prepareStatement(sql)){

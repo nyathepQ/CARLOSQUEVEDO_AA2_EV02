@@ -4,6 +4,7 @@ import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.*;
 import Servicios.UsuarioManager;
+import Clases.Usuario;
 
 /**
  *
@@ -19,12 +20,12 @@ public class LoginServlet extends HttpServlet {
         String usuario = request.getParameter("user");
         String password = request.getParameter("pass");
         
-        boolean login_true = user_manager.verificarCredencial(usuario, password);
+        Usuario user = user_manager.verificarCredencial(usuario, password);
         
-        if(login_true){
+        if(user != null){
             //login exitoso
             HttpSession session = request.getSession();
-            session.setAttribute("usuario", usuario);
+            session.setAttribute("usuario", user);
             response.sendRedirect("Pages/inicio.jsp");
         } else {
             //login fallido

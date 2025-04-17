@@ -159,7 +159,7 @@ public class ClienteManager {
         }
     }
     
-    public String ClienteToString(Cliente cliente) {
+    public String clienteToString(Cliente cliente) {
         return cliente.getNombres() + " " + cliente.getApellidos();
     }
     

@@ -51,4 +51,8 @@ public class Cliente extends Persona {
         this.direccion = direccion;
     }
     
+    public String clienteToString(Cliente cliente) {
+        return cliente.getNombres() + " " + cliente.getApellidos();
+    }
+    
 }

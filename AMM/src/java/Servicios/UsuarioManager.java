@@ -190,7 +190,7 @@ public class UsuarioManager {
         return datos;
     }
     
-    public boolean verificarCredencial(String user, String pass){
+    public Usuario verificarCredencial(String user, String pass){
         String sql = "SELECT * FROM usuario WHERE nombre_usuario = ? AND contrasena_usuario = ?";
         
         try (Connection cx = ConexionBD.getConnection();
@@ -201,14 +201,20 @@ public class UsuarioManager {
             ResultSet rs = stat.executeQuery();
             
             if(rs.next()){
-                return true;
+                Usuario us = new Usuario();
+                us.setUser(rs.getString("nombre_usuario"));
+                us.setTipo_user(rs.getInt("id_tipoUsua"));
+                us.setPassword(rs.getString("contrasena_usuario"));
+                us.setNombres(rs.getString("nombres"));
+                us.setApellidos(rs.getString("apellidos"));
+                return us;
             }
             
         } catch (SQLException e){
             e.printStackTrace();
         }
         
-        return false;
+        return null;
     }   
     
 }

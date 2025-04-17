@@ -31,7 +31,7 @@
                 
                 <button type="submit">Ingresar</button>
                 <% if (request.getAttribute("error") != null) { %>
-                <p style="color:red;"><%= request.getAttribute("error") %></p>
+                <p style="color:darkblue;"><%= request.getAttribute("error") %></p>
                 <% } %>
             </form>
         </div>
@@ -45,5 +45,4 @@
         </a>
     </footer>
 </body>
-<!--<script type="module" src="Js/login.js"></script>-->
 </html>

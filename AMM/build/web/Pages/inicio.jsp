@@ -15,20 +15,35 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Iconos -->
 </head>
 <body>
+    <%@page import="Clases.Usuario"%>
+    <%
+        Usuario user = (Usuario) session.getAttribute("usuario"); //obtener datos de sesión
+        if(user == null){ //si no hay sesión iniciada regresar al index
+            response.sendRedirect("../index.jsp");
+            return;
+        }
+    %>
     <header class="header_pages">
-        <img src="../Img/Logo.jpeg" alt="Logo ALF" class="logo_pages">
-        <div class="list_pages">
-            <ul>
-                <li><a href="agenda.jsp">Agenda</a></li>
-                <li><a href="empleados.jsp">Empleados</a></li>
-                <li><a href="equipos.jsp">Equipo de trabajo</a></li>
-                <li><a href="clientes.jsp">Clientes</a></li>
-                <li><a href="valores.jsp">Varios</a></li>
-            </ul>            
+        <div class="iconUserName">
+            <a href="https://wa.me/573212300716" target="_blank">
+                <i class="fa-solid fa-circle-question fa-2x question_icon" style="color: black;"></i>
+            </a>
+            <p class ="name_user_show">
+                <%= user != null ? user.getUser() : "Invitado" %>
+            </p>            
         </div>
-        <a href="https://wa.me/573212300716" target="_blank">
-            <i class="fa-solid fa-circle-question fa-3x question_icon" style="color: black;"></i>
-        </a>
+        <div class="logo_list">
+            <img src="../Img/Logo.jpeg" alt="Logo ALF" class="logo_pages">
+            <div class="list_pages">
+                <ul>
+                    <li><a href="agenda.jsp">Agenda</a></li>
+                    <li><a href="empleados.jsp">Empleados</a></li>
+                    <li><a href="equipos.jsp">Equipo de trabajo</a></li>
+                    <li><a href="clientes.jsp">Clientes</a></li>
+                    <li><a href="valores.jsp">Varios</a></li>
+                </ul>            
+            </div>
+        </div>        
     </header>
     <div id="inicio_primero">
         <div class="start_data">
@@ -60,5 +75,4 @@
         </div>
     </div>
 </body>
-<!--<script src="../Js/inicio.js"></script>-->
 </html>

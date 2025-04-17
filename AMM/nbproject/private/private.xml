@@ -4,9 +4,14 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/web/index.jsp</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/web/Pages/inicio.jsp</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/web/Pages/agenda.jsp</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/controladores/ServicioServlet.java</file>
             <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/controladores/LoginServlet.java</file>
             <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/Servicios/UsuarioManager.java</file>
-            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/Clases/ConexionBD.java</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/Servicios/ServicioManager.java</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/src/java/Servicios/ClienteManager.java</file>
+            <file>file:/C:/Users/nyath/Documents/Git%20proyects/CARLOSQUEVEDO_AA2_EV02/AMM/web/Pages/listadoServicios.jsp</file>
         </group>
     </open-files>
 </project-private>
