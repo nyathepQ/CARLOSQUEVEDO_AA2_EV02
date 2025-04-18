@@ -11,7 +11,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
-    <link rel="stylesheet" href="../Estilos/styles.css"> <!-- Estilos -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/Estilos/styles.css"> <!-- Estilos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"> <!-- Iconos -->
 </head>
 <body>
@@ -33,14 +33,14 @@
             </p>            
         </div>
         <div class="logo_list">
-            <img src="../Img/Logo.jpeg" alt="Logo ALF" class="logo_pages">
+            <img src="<%= request.getContextPath() %>/Img/Logo.jpeg" alt="Logo ALF" class="logo_pages">
             <div class="list_pages">
                 <ul>
-                    <li><a href="agenda.jsp">Agenda</a></li>
-                    <li><a href="empleados.jsp">Empleados</a></li>
-                    <li><a href="equipos.jsp">Equipo de trabajo</a></li>
-                    <li><a href="clientes.jsp">Clientes</a></li>
-                    <li><a href="valores.jsp">Varios</a></li>
+                    <li><a href="<%= request.getContextPath() %>/Pages/agenda.jsp">Agenda</a></li>
+                    <li><a href="<%= request.getContextPath() %>/Pages/empleados.jsp">Empleados</a></li>
+                    <li><a href="<%= request.getContextPath() %>/Pages/equipos.jsp">Equipo de trabajo</a></li>
+                    <li><a href="<%= request.getContextPath() %>/Pages/clientes.jsp">Clientes</a></li>
+                    <li><a href="<%= request.getContextPath() %>/Pages/valores.jsp">Varios</a></li>
                 </ul>            
             </div>
         </div>        

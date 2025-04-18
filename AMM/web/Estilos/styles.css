@@ -347,3 +347,9 @@ h2 {
 table {
     background: white;
 }
+
+#form_tipo_usuario{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

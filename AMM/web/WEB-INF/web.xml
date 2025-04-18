@@ -1,8 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="6.1" xmlns="https://jakarta.ee/xml/ns/jakartaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_1.xsd">
+    <servlet>
+        <servlet-name>EquipoServlet</servlet-name>
+        <servlet-class>controladores.EquipoServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ClienteServlet</servlet-name>
+        <servlet-class>controladores.ClienteServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>TiposServlet</servlet-name>
+        <servlet-class>controladores.TiposServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>EmpleadoServlet</servlet-name>
         <url-pattern>/EmpleadoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EquipoServlet</servlet-name>
+        <url-pattern>/EquipoServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ClienteServlet</servlet-name>
+        <url-pattern>/ClienteServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>TiposServlet</servlet-name>
+        <url-pattern>/TiposServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>30</session-timeout>

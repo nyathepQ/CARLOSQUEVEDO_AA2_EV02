@@ -78,7 +78,7 @@ public class ServicioServlet extends HttpServlet {
                             boolean creation = manager.insertServicio(servicio);
                             if (creation){
                                 request.setAttribute("mensaje", "Servicio creado exitosamente.");
-                                request.setAttribute("servicio", servicio);
+                                request.setAttribute("servicio", null);
                             } else {
                                 request.setAttribute("error", "No se pudo crear el servicio");
                             }

@@ -26,7 +26,6 @@
             response.sendRedirect("../index.jsp");
             return;
         }
-        UsuarioManager us_manager = new UsuarioManager();
         VariosManager tipos_manager = new VariosManager();
         Varios[] ti_do = tipos_manager.getAllTipoVarios("tipo_documento", "id_tipoDocu");
         Varios[] ti_us = tipos_manager.getAllTipoVarios("tipo_usuario", "id_tipoUsua");
@@ -35,8 +34,8 @@
         Varios tu_empleado = new Varios();
         
         if(empleado != null){
-            td_empleado = tipos_manager.buscarTipoVarios("tipo_usuario", "id_tipoUsua", empleado.getTipo_user());
-            tu_empleado = tipos_manager.buscarTipoVarios("tipo_documento", "id_tipoDocu", empleado.getTipo_docu());
+            tu_empleado = tipos_manager.buscarTipoVarios("tipo_usuario", "id_tipoUsua", empleado.getTipo_user());
+            td_empleado = tipos_manager.buscarTipoVarios("tipo_documento", "id_tipoDocu", empleado.getTipo_docu());
         }
         
     %>
@@ -64,7 +63,7 @@
     </header>
     <div class="pages_div">
         <div>
-            <form class="form_pages">  
+            <form class="form_pages" action="<%= request.getContextPath() %>/EmpleadoServlet" method="post">  
                 <% if (request.getAttribute("error") != null) { %>
                     <p style="color:darkblue;"><%= request.getAttribute("error") %></p>
                 <% } %>
@@ -73,30 +72,52 @@
                 <% } %>
                 <div class="form_display" action="<%= request.getContextPath() %>/EmpleadoServlet" method="post">
                     <label for="id_usuario">Código</label>
-                    <input type="text" name="id_usuario" id="id_usuario">
+                    <input type="text" name="id_usuario" id="id_usuario" value="<%= empleado != null ? empleado.getCodigo() : "" %>">
                     <label for="documento_usuario">Identificación</label>
                     <div id="div_identificacion">
                         <select name="id_tipoDocu" id="id_tipoDocu">
-                            
+                            <option value="<%= empleado != null ? empleado.getTipo_docu() : "" %>"><%= empleado != null && td_empleado != null ? td_empleado.getNombre() : "--Seleccione un cliente--" %></option>
+                            <%
+                                for (Varios td : ti_do){
+                                    if (empleado == null || td.getCodigo() != td_empleado.getCodigo()){
+                            %>
+                            <option value="<%= td.getCodigo() %>">
+                                <%= td.getNombre() %>
+                            </option>
+                            <%
+                                    }
+                                }
+                            %>                            
                         </select>
-                        <input type="text" name="documento_usuario" id="documento_usuario">
+                        <input type="text" name="documento_usuario" id="documento_usuario" value="<%= empleado != null ? empleado.getDocumento() : "" %>">
                     </div>
                     <label for="nombres">Nombres</label>
-                    <input type="text" name="nombres" id="nombres">
+                    <input type="text" name="nombres" id="nombres" value="<%= empleado != null ? empleado.getNombres() : "" %>">
                     <label for="apellidos">Apellidos</label>
-                    <input type="text" name="apellidos" id="apellidos">
+                    <input type="text" name="apellidos" id="apellidos" value="<%= empleado != null ? empleado.getApellidos() : "" %>">
                     <label for="id_tipoUsua">Tipo de usuario</label>
                     <select name="id_tipoUsua" id="id_tipoUsua">
-                        
+                        <option value="<%= empleado != null ? empleado.getTipo_user(): "" %>"><%= empleado != null && tu_empleado != null ? tu_empleado.getNombre() : "--Seleccione un cliente--" %></option>
+                            <%
+                                for (Varios tu : ti_us){
+                                    if (empleado == null || tu.getCodigo() != tu_empleado.getCodigo()){
+                            %>
+                            <option value="<%= tu.getCodigo() %>">
+                                <%= tu.getNombre() %>
+                            </option>
+                            <%
+                                    }
+                                }
+                            %> 
                     </select>                    
                     <label for="telefono_usuario">Telefono</label>
-                    <input type="text" name="telefono_usuario" id="telefono_usuario">
+                    <input type="text" name="telefono_usuario" id="telefono_usuario" value="<%= empleado != null ? empleado.getTelefono(): "" %>">
                     <label for="correo_usuario">Correo electronico</label>
-                    <input type="text" name="correo_usuario" id="correo_usuario">
+                    <input type="text" name="correo_usuario" id="correo_usuario" value="<%= empleado != null ? empleado.getEmail() : "" %>">
                     <label for="nombre_usuario">Usuario</label>
-                    <input type="text" name="nombre_usuario" id="nombre_usuario">
+                    <input type="text" name="nombre_usuario" id="nombre_usuario" value="<%= empleado != null ? empleado.getUser() : "" %>">
                     <label for="contrasena_usuario">Contraseña</label>
-                    <input type="text" name="contrasena_usuario" id="contrasena_usuario">
+                    <input type="text" name="contrasena_usuario" id="contrasena_usuario" value="<%= empleado != null ? empleado.getPassword() : "" %>">
                 </div>
                 <div>
                     <button type="submit" name="accion" value="buscar">Buscar</button>

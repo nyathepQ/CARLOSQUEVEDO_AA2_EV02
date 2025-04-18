@@ -39,7 +39,7 @@ public class EquipoTrabajoManager {
                         idEquipoGenerado = rs.getInt(1);
                     } else {
                         cx.rollback();
-                        System.err.println("Error al eliminar cliente");
+                        System.err.println("Error al insertar equipo");
                         return false;
 
                     }
@@ -205,7 +205,7 @@ public class EquipoTrabajoManager {
     
     public boolean modificarEquipo (EquipoTrabajo equipo) {
         String sql1 = "UPDATE equipo SET nombre_equipo = ?, user_modifica = ?, modificado_el = ? WHERE id_equipo = ?";
-        String sqlSelect = "SELECT id_usuarios_equipo FROM usuarios_equpo WHERE id_equipo = ?";
+        String sqlSelect = "SELECT id_usuarios_equipo FROM usuarios_equipo WHERE id_equipo = ?";
         String sql3 = "UPDATE usuarios_equipo SET id_usuario = ?, es_lider = ? WHERE id_usuarios_equipo = ?";
         
         
@@ -217,6 +217,7 @@ public class EquipoTrabajoManager {
                 stat1.setString(1, equipo.getNombre_equipo());
                 stat1.setString(2, equipo.getUser_modifica());
                 stat1.setTimestamp(3, equipo.getModificado_el());
+                stat1.setInt(4, equipo.getCodigo());
                 stat1.executeUpdate();
             }
             
@@ -241,9 +242,8 @@ public class EquipoTrabajoManager {
             try (PreparedStatement stat3 = cx.prepareStatement(sql3)){
                 for(int i = 0; i < registroUsuario.size(); i++){
                     int id_usuarios_equipo = registroUsuario.get(i);
-                    String id_usuario = i < nuevosUsuario.size() ? nuevosUsuario.get(i) : null;
                     
-                    stat3.setObject(1, id_usuario, Types.VARCHAR);
+                    stat3.setString(1, nuevosUsuario.get(i));
                     stat3.setInt(2, i == 0 ? 1 : 0);//solo el primer registro es lider
                     stat3.setInt(3, id_usuarios_equipo);
                     stat3.addBatch();
@@ -272,7 +272,7 @@ public class EquipoTrabajoManager {
                 stat1.setInt(1, codigo_equipo);
                 stat1.executeUpdate();
             }
-            
+            //eliminar equipo
             try (PreparedStatement stat2 = cx.prepareStatement(sql1)){
                 stat2.setInt(1, codigo_equipo);
                 stat2.executeUpdate();

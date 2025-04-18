@@ -39,16 +39,35 @@ public class UsuarioManager {
         }
     }
     
-    public Usuario buscarUsuario (String codigo_b) {
+    public Usuario buscarUsuario (String codigo_b, String username) {
         Connection cx = ConexionBD.getConnection();
         Usuario us = null;
         
         if(cx != null) {
-            String sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+            String sql = "";
+            int type = 0;
+            if(!codigo_b.isEmpty() && !username.isEmpty()){
+                type = 1;
+                sql = "SELECT * FROM usuario WHERE id_usuario = ? AND nombre_usuario = ?";
+            } else if (!codigo_b.isEmpty()){
+                type = 2;
+                sql = "SELECT * FROM usuario WHERE id_usuario = ?";
+            } else if (!username.isEmpty()){
+                type = 3;
+                sql = "SELECT * FROM usuario WHERE nombre_usuario = ?";
+            }
+            
             
             try {
                 PreparedStatement stat = cx.prepareStatement(sql);
-                stat.setString(1, codigo_b);
+                if (type == 1){
+                    stat.setString(1, codigo_b);
+                    stat.setString(2, username);
+                } else if (type == 2){
+                    stat.setString(1, codigo_b);
+                } else if (type == 3){
+                    stat.setString(1, username);
+                }                
                 ResultSet rs = stat.executeQuery();
                 
                 if(rs.next()) {
